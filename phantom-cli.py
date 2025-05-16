@@ -16,7 +16,7 @@ def main():
     route = sys.argv[1]
     if route == "mystify_user_route_2024":
         print("Accessing vault... 🔓")
-        # flag{cl1_4cc355_r0ut3_v4l1d4t3d}
+        # Go back in time... Do you have a time machine???
     else:
         print("Error: Invalid route")
 
