@@ -16,7 +16,7 @@ def main():
     route = sys.argv[1]
     if route == "mystify_user_route_2024":
         print("Accessing vault... 🔓")
-        # flag{cli_access_route_validated}
+        # flag{cl1_4cc355_r0ut3_v4l1d4t3d}
     else:
         print("Error: Invalid route")
 
