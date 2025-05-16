@@ -1,14 +1,14 @@
 
-def command(cipher_text, depth):
-    rail = [['\n' for i in range(len(cipher_text))] for j in range(depth)]
+def command(CT, Q):
+    rail = [['\n' for i in range(len(CT))] for j in range(Q)]
 
     dir_down = None
     row, col = 0, 0
 
-    for i in range(len(cipher_text)):
+    for i in range(len(CT)):
         if row == 0:
             dir_down = True
-        if row == depth - 1:
+        if row == Q - 1:
             dir_down = False
 
         rail[row][col] = '*'
@@ -17,18 +17,18 @@ def command(cipher_text, depth):
         row += 1 if dir_down else -1
 
     index = 0
-    for i in range(depth):
-        for j in range(len(cipher_text)):
-            if rail[i][j] == '*' and index < len(cipher_text):
-                rail[i][j] = cipher_text[index]
+    for i in range(Q):
+        for j in range(len(CT)):
+            if rail[i][j] == '*' and index < len(CT):
+                rail[i][j] = CT[index]
                 index += 1
 
     result = []
     row, col = 0, 0
-    for i in range(len(cipher_text)):
+    for i in range(len(CT)):
         if row == 0:
             dir_down = True
-        if row == depth - 1:
+        if row == Q - 1:
             dir_down = False
 
         if rail[row][col] != '\n':
