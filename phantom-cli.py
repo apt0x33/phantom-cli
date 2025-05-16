@@ -1,24 +1,46 @@
-#!/usr/bin/env python3
-import sys
 
-def banner():
-    print("Phantom CLI v0.0.1 - APT0x33 Internal Toolkit")
+def command(cipher_text, depth):
+    rail = [['\n' for i in range(len(cipher_text))] for j in range(depth)]
 
-def help():
-    print("Usage: phantom-cli <route>")
-    print("Example: phantom-cli mystify_user_route_2024")
+    dir_down = None
+    row, col = 0, 0
 
-def main():
-    banner()
-    if len(sys.argv) < 2:
-        help()
-        return
-    route = sys.argv[1]
-    if route == "mystify_user_route_2024":
-        print("Accessing vault... 🔓")
-        # Go back in time... Do you have a time machine???
-    else:
-        print("Error: Invalid route")
+    for i in range(len(cipher_text)):
+        if row == 0:
+            dir_down = True
+        if row == depth - 1:
+            dir_down = False
 
-if __name__ == "__main__":
-    main()
+        rail[row][col] = '*'
+        col += 1
+
+        row += 1 if dir_down else -1
+
+    index = 0
+    for i in range(depth):
+        for j in range(len(cipher_text)):
+            if rail[i][j] == '*' and index < len(cipher_text):
+                rail[i][j] = cipher_text[index]
+                index += 1
+
+    result = []
+    row, col = 0, 0
+    for i in range(len(cipher_text)):
+        if row == 0:
+            dir_down = True
+        if row == depth - 1:
+            dir_down = False
+
+        if rail[row][col] != '\n':
+            result.append(rail[row][col])
+            col += 1
+
+        row += 1 if dir_down else -1
+
+    return "".join(result)
+
+pookie = "AHRIOANIDUA!NTE_ABTHL_GI_RCE_O_EH!ORB_EATKYY!"
+const = 3
+
+patootie = command(pookie.replace(" ", ""), const)
+print(patootie)
